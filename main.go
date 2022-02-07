@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
 
 	"github.com/gorilla/mux"
 )
@@ -26,7 +27,9 @@ var posts = allPost{
 }
 
 func validateAuthor() {
-
+	user := "t2_11qnzrqv"
+	validUserName := regexp.MustCompile("t2_+[a-z-0-9_]*$")
+	fmt.Println(validUserName.MatchString(user))
 }
 
 func getPost(w http.ResponseWriter, r *http.Request) {
