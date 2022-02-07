@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"regexp"
 
 	"github.com/gorilla/mux"
@@ -30,6 +31,12 @@ func validateAuthor() {
 	user := "t2_11qnzrqv"
 	validUserName := regexp.MustCompile("t2_+[a-z-0-9_]*$")
 	fmt.Println(validUserName.MatchString(user))
+}
+
+func validateURL() {
+	u, err := url.ParseRequestURI("hi/there?")
+	u, err = url.ParseRequestURI("http://golang.cafe/")
+	log.Printf("hi/there?: err=%+v url=%+v\n", err, u)
 }
 
 func getPost(w http.ResponseWriter, r *http.Request) {
