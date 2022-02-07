@@ -17,7 +17,7 @@ type post struct {
 
 type allPost []post
 
-var tasks = allPost{
+var posts = allPost{
 	{
 		ID:     1,
 		Title:  "My first Post",
@@ -25,9 +25,13 @@ var tasks = allPost{
 	},
 }
 
+func validateAuthor() {
+
+}
+
 func getPost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(tasks)
+	json.NewEncoder(w).Encode(posts)
 }
 func indexRoute(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "API Go Redit")
